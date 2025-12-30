@@ -1,26 +1,135 @@
+/* ========================================================================
+   Theme: Ultraminimal - organized stylesheet
+   Purpose: Grouped sections for easier maintenance and improved readability.
+   Sections:
+     1) Base / Root: page width, spacing, base font-size
+     2) Typography: tag/type selectors (headings, paragraphs, lists, code)
+     3) Layout & Navigation: page-level layout and nav components (class selectors)
+     4) Components: small UI blocks (post-nav, cards, etc.)
+     5) Utilities: helper styles
+   Note: class selectors are grouped under "Layout & Navigation" and "Components".
+   Credit: https://dev.to/swyx/100-bytes-of-css-to-look-great-everywhere-19pd
+   ======================================================================== */
+
+/* -----------------------------
+   1) Base / Root
+   - Controls overall page width, padding and root font sizing
+   ----------------------------- */
 html {
-  max-width: 60ch;
-  padding: 1.5rem;
+  max-width: 70ch;
   margin: auto;
-  line-height: 1.5rem;
-  font-size: 24px;
+  padding: 1.5rem;
+  font-size: 1.5em; /* base size for easier scaling */
+  line-height: 1.5; /* use a unitless line-height for better accessibility */
 }
-body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-.nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
-.nav-left { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #111;
+  background: #fff;
+}
+
+/* -----------------------------
+   2) Typography (type/tag selectors)
+   - Headings, paragraphs, lists, code, blockquote, hr, anchors
+   ----------------------------- */
+/* Headings */
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1.2;
+  margin: 0.35em 0 0.7em;
+}
+
+/* Content text */
+
+small { font-size: 0.85em; }
+ul { padding-left: 1.25rem; }
+hr { margin: 1.25rem 0; border: none; height: 1px; background: currentColor; opacity: 0.08; }
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.15em;
+}
+a:hover { text-decoration-style: wavy; }
+
+/* Code / preformatted */
+pre, code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+pre {
+  padding: 0.75rem;
+  overflow: auto;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+}
+
+/* Blockquote */
+blockquote {
+  margin: 0 0 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid currentColor;
+  color: rgba(0,0,0,0.75);
+}
+
+/* -----------------------------
+   3) Layout & Navigation (class selectors)
+   - Page-level components: nav, header, footers, containers
+   ----------------------------- */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 nav a { margin-right: 0.75rem; }
 nav .logo-mark { text-decoration: none; }
-.nav-right .rss-link { display: inline-flex; align-items: center; gap: 0.35rem; text-decoration: none; }
+
+.nav-right .rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
 .nav-right img { display: inline-block; vertical-align: middle; }
-a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 0.15em; }
-a:hover { text-decoration-style: wavy; }
-hr { margin: 1.25rem 0; }
-h1,h2,h3 { line-height: 1.2; }
-pre,code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
-pre { padding: 0.75rem; overflow:auto; border: 1px solid currentColor; }
-blockquote { margin-left: 0; padding-left: 1rem; border-left: 4px solid currentColor; }
-ul { padding-left: 1.25rem; }
-small { font-size: 0.85em; }
-.post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+
+/* -----------------------------
+   4) Components
+   - Page components and small UI pieces grouped here
+   ----------------------------- */
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
 .post-nav-left { text-align: left; }
 .post-nav-right { text-align: right; }
+
+/* -----------------------------
+   5) Utilities
+   - Small helper classes kept together for quick reference
+   ----------------------------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* End of stylesheet */
