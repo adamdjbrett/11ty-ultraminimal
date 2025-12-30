@@ -11,6 +11,7 @@
     { "label": "Home", "url": "/" },
     { "label": "About", "url": "/about/" },
     { "label": "Contact", "url": "/contact/" },
-    { "label": "Blog", "url": "/blog/" }
+    { "label": "Blog", "url": "/blog/" },
+    { "label": "Download", "url": "https://github.com/adamdjbrett/11ty-ultraminimal" }
   ]
 }
