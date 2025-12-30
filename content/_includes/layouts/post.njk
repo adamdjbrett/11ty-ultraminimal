@@ -1,0 +1,35 @@
+---
+layout: base
+---
+<article>
+  <h1>{{ title }}</h1>
+  {% if date %}<p><em><small>{{ date | date("LLL d, yyyy") }}</small></em></p>{% endif %}
+  {{ content | safe }}
+</article>
+
+{% set posts = collections.posts or [] %}
+{% set prevPost = null %}
+{% set nextPost = null %}
+{% if posts.length %}
+  {% for p in posts %}
+    {% if p.url == page.url %}
+      {% if not loop.last %}{% set prevPost = posts[loop.index0 + 1] %}{% endif %}
+      {% if not loop.first %}{% set nextPost = posts[loop.index0 - 1] %}{% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+<hr />
+{% if prevPost or nextPost %}
+  <div class="post-nav">
+    <div class="post-nav-left">
+      {% if prevPost %}
+        <a href="{{ prevPost.url }}">← Previous</a>
+      {% endif %}
+    </div>
+    <div class="post-nav-right">
+      {% if nextPost %}
+        <a href="{{ nextPost.url }}">Next →</a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

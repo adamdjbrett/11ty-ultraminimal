@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <!-- favicon emoji -->
+    {% if metadata.logo %}
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='48'%3E{{ metadata.logo | urlencode }}%3C/text%3E%3C/svg%3E">
+    {% endif %}
+
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Primary" class="nav-bar">
+        <div class="nav-left">
+          {% if metadata.logo %}
+            <a href="/" aria-label="{{ metadata.title }} home" class="logo-mark">{{ metadata.logo }}</a>
+          {% endif %}
+          {% for item in metadata.navigation %}
+            {% set current = (page.url == item.url) or (item.url == "/blog/" and page.url and page.url.startsWith('/blog/')) %}
+            <a href="{{ item.url }}" {% if current %}aria-current="page"{% endif %}>{{ item.label }}</a>
+          {% endfor %}
+        </div>
+        {% if metadata.rss %}
+        <div class="nav-right">
+          <a class="rss-link" href="{{ metadata.rss }}" aria-label="{{ metadata.title }} RSS feed">
+            {% if metadata["rss-icon"] %}
+              <img src="{{ metadata["rss-icon"] }}" alt="RSS feed" width="20" height="20" />
+            {% else %}
+              RSS
+            {% endif %}
+          </a>
+        </div>
+        {% endif %}
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      {{ content | safe }}
+    </main>
+
+    <footer>
+      <hr />
+      <small>
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en" rel="license">CC BY-NC 4.0</a> {{ now | date("yyyy") }} 
+        ·{% if metadata.title %} {{ metadata.title }} {% endif%} {% if metadata.author %}· <a href="{{ metadata.url }}">{{ metadata.author }}</a>{% endif %}
+        · <a href="/sitemap.xml">Sitemap</a>
+      </small>
+    </footer>
+  </body>
+</html>

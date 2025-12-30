@@ -1,0 +1,16 @@
+{
+  "title": "11ty Ultra minimalism",
+  "description": "A barebones Eleventy (3.1.2, ESM) starter with just the essentials.",
+  "author": "Adam DJ Brett",
+  "authorEmail": "info@adamdjbrett.com",
+  "url": "https://ultra.000000076.xyz",
+  "logo": "🐦‍⬛",
+  "rss-icon": "/assets/images/rss.svg",
+  "rss": "/feed/feed.xml",
+  "navigation": [
+    { "label": "Home", "url": "/" },
+    { "label": "About", "url": "/about/" },
+    { "label": "Contact", "url": "/contact/" },
+    { "label": "Blog", "url": "/blog/" }
+  ]
+}
