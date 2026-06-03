@@ -8,6 +8,11 @@
     "build": "npx @11ty/eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.1.2"
-  }
+    "@11ty/eleventy": "^3.1.6"
+  },
+  "engines": {
+    "node": ">=24",
+    "npm": ">=11.14.0"
+  },
+  "packageManager": "npm@11.14.0"
 }
